@@ -3,6 +3,11 @@
 All notable changes to the "amiga-debug" extension will be documented in this file.
 See PR links for more information.
 
+## 1.8.0
+- NEW: update gcc to 15.1.0
+- NEW: elf2hunk support R_68K_PC32 handling [PR#3](https://github.com/BartmanAbyss/elf2hunk/pull/3) by [Jake Taylor](https://github.com/yupferris)
+- NEW: template: `EMBED`, `EMBED_CHIP` replace `INCBIN`, `INCBIN_CHIP`, use those for better dependency tracking
+
 ## 1.7.9
 - NEW: update gcc to 14.2.0, binutils, GNU gdb (GDB) 17.0.50.20250202-git
 
