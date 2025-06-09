@@ -3,6 +3,10 @@
 All notable changes to the "amiga-debug" extension will be documented in this file.
 See PR links for more information.
 
+## 1.8.1
+- FIX: fix `GetVBR` for 68040 (thanks to Ferris and Sniper)
+- FIX: `Disassemble ELF File` now supports 68040 instructions
+
 ## 1.8.0
 - NEW: update gcc to 15.1.0
 - NEW: elf2hunk support R_68K_PC32 handling [PR#3](https://github.com/BartmanAbyss/elf2hunk/pull/3) by [Jake Taylor](https://github.com/yupferris)

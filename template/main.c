@@ -27,14 +27,16 @@ static APTR SystemIrq;
  
 struct View *ActiView;
 
+static __attribute__((interrupt)) void SupervisorGetVBR() {
+	__asm__ volatile(".short 0x4e7a, 0x0801"); // movec.l vbr, d0
+}
+
 static APTR GetVBR(void) {
 	APTR vbr = 0;
-	UWORD getvbr[] = { 0x4e7a, 0x0801, 0x4e73 }; // MOVEC.L VBR,D0 RTE
-
 	if (SysBase->AttnFlags & AFF_68010) 
-		vbr = (APTR)Supervisor((ULONG (*)())getvbr);
+		vbr = (APTR)Supervisor((ULONG (*)())SupervisorGetVBR);
 
-	return vbr;
+	return vbr; 
 }
 
 void SetInterruptHandler(APTR interrupt) {
@@ -149,6 +151,7 @@ __attribute__((always_inline)) inline short MouseRight(){return !((*(volatile UW
 
 // DEMO - EMBED
 volatile short frameCounter = 0;
+
 EMBED colors[] = { 
 	#embed "image.pal"
 };
