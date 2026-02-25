@@ -39,7 +39,7 @@ interface LaunchRequestArguments extends DebugProtocol.LaunchRequestArguments {
 	slowmem?: string; // '0', '512k', '1M', '1.8M'
 	ntsc?: boolean; // NTSC mode
 	emuargs?: string[]; // Additional CLI arguments for emulator
-	noExeExt?: boolean; // default: false — build binary with no extension
+	noExtension?: boolean; // default: false — build binary with no extension
 	emulatorType?: string; // 'fs-uae' | 'winuae', default: 'fs-uae'
 	stopOnEntry?: boolean; // default: false — stop debugger on entry
 }
@@ -196,7 +196,7 @@ export class AmigaDebugSession extends LoggingDebugSession {
 		let config = new Map<string, string>();
 
 		const exePath = path.dirname(args.program);
-		const exeName = args.noExeExt
+		const exeName = args.noExtension
 			? path.basename(args.program)
 			: path.basename(args.program) + ".exe";
 		const debugTrigger = args.noDebug
@@ -514,7 +514,7 @@ export class AmigaDebugSession extends LoggingDebugSession {
 			return;
 		}
 
-		const exeFile = args.noExeExt ? args.program : args.program + ".exe";
+		const exeFile = args.noExtension ? args.program : args.program + ".exe";
 		if (!fs.existsSync(exeFile)) {
 			this.sendErrorResponse(response, 103, `Unable to find executable file at ${exeFile}.`);
 			return;
