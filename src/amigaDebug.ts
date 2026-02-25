@@ -299,22 +299,22 @@ export class AmigaDebugSession extends LoggingDebugSession {
 			// safety
 			config.delete('statefile');
 
-			// Optional override memory config
+			// Optional override memory config (values in KB for WinUAE config)
 			switch(args.chipmem?.toLowerCase()) {
 			case '256k':
-				config.set('chipmem_size', '0');
+				config.set('chipmem_size', '256');
 				break;
 			case '512k':
-				config.set('chipmem_size', '1');
+				config.set('chipmem_size', '512');
 				break;
 			case '1m':
-				config.set('chipmem_size', '2');
+				config.set('chipmem_size', '1024');
 				break;
 			case '1.5m':
-				config.set('chipmem_size', '3');
+				config.set('chipmem_size', '1536');
 				break;
 			case '2m':
-				config.set('chipmem_size', '4');
+				config.set('chipmem_size', '2048');
 				break;
 			default:
 				config.delete('chipmem_size');
@@ -326,30 +326,30 @@ export class AmigaDebugSession extends LoggingDebugSession {
 				config.set('fastmem_size', '0');
 				break;
 			case '64k':
-				config.set('fastmem_size_k', '64');
+				config.set('fastmem_size', '64');
 				break;
 			case '128k':
-				config.set('fastmem_size_k', '128');
+				config.set('fastmem_size', '128');
 				break;
 			case '256k':
-				config.set('fastmem_size_k', '256');
+				config.set('fastmem_size', '256');
 				break;
 			case '512k':
 			case '0.5m':
 			case '.5m':
-				config.set('fastmem_size_k', '512');
+				config.set('fastmem_size', '512');
 				break;
 			case '1m':
-				config.set('fastmem_size', '1');
+				config.set('fastmem_size', '1024');
 				break;
 			case '2m':
-				config.set('fastmem_size', '2');
+				config.set('fastmem_size', '2048');
 				break;
 			case '4m':
-				config.set('fastmem_size', '4');
+				config.set('fastmem_size', '4096');
 				break;
 			case '8m':
-				config.set('fastmem_size', '8');
+				config.set('fastmem_size', '8192');
 				break;
 			default:
 				config.delete('fastmem_size');
@@ -361,13 +361,13 @@ export class AmigaDebugSession extends LoggingDebugSession {
 				config.set('bogomem_size', '0');
 				break;
 			case '512k':
-				config.set('bogomem_size', '2');
+				config.set('bogomem_size', '512');
 				break;
 			case '1m':
-				config.set('bogomem_size', '4');
+				config.set('bogomem_size', '1024');
 				break;
 			case '1.8m':
-				config.set('bogomem_size', '7');
+				config.set('bogomem_size', '1792');
 				break;
 			default:
 				config.delete('bogomem_size');
@@ -416,7 +416,7 @@ export class AmigaDebugSession extends LoggingDebugSession {
 			}
 			// args.cpuboard: no FS-UAE equivalent?
 
-			// Optional override memory config
+			// Optional override memory config (values in MB for FS-UAE)
 			switch(args.chipmem?.toLowerCase()) {
 			case '256k':
 				config.set('chip_memory', '256');

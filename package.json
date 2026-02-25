@@ -388,7 +388,7 @@
 								"description": "Addtional CLI arguments for emulator",
 								"default": []
 							},
-							"noExeExt": {
+							"noExtension": {
 								"type": "boolean",
 								"description": "Build binary with no extension (omit .exe)",
 								"default": false
