@@ -203,8 +203,9 @@ export class AmigaDebugSession extends LoggingDebugSession {
 			? exeName
 			: (args.endcli ? exeName : ':' + exeName);
 
-		const useWinUAE = (args.emulatorType === 'winuae');
-		const useFSUAE = !useWinUAE; // fs-uae is default
+		const emulatorType = args.emulatorType || (isWin ? 'winuae' : 'fs-uae');
+		const useWinUAE = (emulatorType === 'winuae');
+		const useFSUAE = !useWinUAE;
 		const machine = args.config?.toLowerCase();
 
 		if (args.kickstart && !fs.existsSync(args.kickstart)) {
